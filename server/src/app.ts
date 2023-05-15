@@ -25,4 +25,10 @@ app.get("/decks", async (req: Request, res: Response) => {
   res.json(decks);
 });
 
+app.delete("/decks/:deckId", async (req: Request, res: Response) => {
+  const deckId = req.params.deckId;
+  await Deck.findByIdAndDelete(deckId);
+  res.json({ message: "Deck deleted successfully" });
+});
+
 export default app;

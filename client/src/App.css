@@ -22,6 +22,7 @@
   background: wheat;
   color: steelblue;
   border-radius: 1em;
+  position: relative;
 }
 
 .App {
@@ -37,6 +38,9 @@
   justify-content: center;
 }
 
-.decks li:hover {
-  background-color: aquamarine;
+.decks li button {
+  position: absolute;
+  font-size: 12px;
+  top: 6px;
+  right: 5px;
 }
