@@ -1,30 +1,32 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { deleteDeck } from "./api/deleteDeck";
 import { getDecks, TDeck } from "./api/getDecks";
 import { createDeck } from "./api/createDeck";
+import { createCard } from "./api/createCard";
 
-function App() {
-  const [title, setTitle] = useState("");
-  const [decks, setDecks] = useState<TDeck[]>([]);
+export default function Deck() {
+  const [cards, setCards] = useState<string[]>([]);
+  const [text, setText] = useState("");
+  const { deckId } = useParams();
 
   async function handleCreateDeck(e: React.FormEvent) {
     e.preventDefault();
-    const deck = await createDeck(title);
-    setDecks([...decks, deck]);
-    setTitle("");
+    const { cards: serverCards } = await createCard(deckId!, text);
+    setCards(serverCards);
+    setText("");
   }
 
   async function handleDeleteDeck(deckId: string) {
     await deleteDeck(deckId);
-    setDecks(decks.filter((deck) => deck._id !== deckId));
+    //setDecks(decks.filter((deck) => deck._id !== deckId));
   }
 
   useEffect(() => {
     async function fetchDecks() {
       const newDecks = await getDecks();
-      setDecks(newDecks);
+      //setDecks(newDecks);
     }
     fetchDecks();
   }, []);
@@ -32,26 +34,21 @@ function App() {
   return (
     <div className="App">
       <ul className="decks">
-        {decks.map((deck) => (
-          <li key={deck._id}>
-            <button onClick={() => handleDeleteDeck(deck._id)}>X</button>
-            <Link to={`decks/${deck._id}`}>{deck.title}</Link>
-          </li>
+        {cards.map((card) => (
+          <li key={card}>{card}</li>
         ))}
       </ul>
       <form onSubmit={handleCreateDeck}>
-        <label htmlFor="deck-title">Deck Title</label>
+        <label htmlFor="card-title">Card text</label>
         <input
-          id="deck-title"
-          value={title}
+          id="card-title"
+          value={text}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setTitle(e.target.value);
+            setText(e.target.value);
           }}
         />
-        <button>Create Deck</button>
+        <button>Create Card</button>
       </form>
     </div>
   );
 }
-
-export default App;
