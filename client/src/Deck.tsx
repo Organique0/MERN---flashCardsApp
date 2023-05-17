@@ -38,6 +38,7 @@ export default function Deck() {
 
   return (
     <div className="App">
+      <h1>{deck?.title}</h1>
       <ul className="decks">
         {cards.map((card, cardId) => (
           <li key={cardId}>

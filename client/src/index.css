@@ -67,3 +67,19 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.app h1 {
+  font-size: 32px;
+  text-align: center;
+}
