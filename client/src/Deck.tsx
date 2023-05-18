@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./App.css";
+import "./styles/Style.css";
 import { useParams } from "react-router-dom";
 import { TDeck } from "./api/getDecks";
 import { createCard } from "./api/createCard";

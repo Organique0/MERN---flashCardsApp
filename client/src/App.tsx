@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./App.css";
+import "./styles/Style.css";
 import { Link } from "react-router-dom";
 import { deleteDeck } from "./api/deleteDeck";
 import { getDecks, TDeck } from "./api/getDecks";
@@ -32,7 +32,9 @@ function App() {
   return (
     <div className="container">
       <div className="App">
-        <h1>your decks</h1>
+        <h1 className="dark:text-dark-text-primary light:text-light-text-primary">
+          YOUR DECKS
+        </h1>
         <ul className="decks">
           {decks.map((deck) => (
             <li key={deck._id}>

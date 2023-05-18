@@ -1,7 +1,7 @@
-import "./Header.css";
+import "./styles/Style.css";
 export function Header() {
   return (
-    <div className="Header">
+    <div className="light:bg-black dark:bg-black">
       <div className="container">
         <div>
           <a href="/">Logo</a>

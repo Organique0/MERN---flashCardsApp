@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
-import "./index.css";
+import "./styles/Style.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Deck from "./Deck.tsx";
 import { Header } from "./Header.tsx";
+import { ToggleDarkMode } from "./ToggleDarkMode.tsx";
 
 const router = createBrowserRouter([
   {
@@ -17,11 +18,30 @@ const router = createBrowserRouter([
   }
 ]);
 
+const Main = () => {
+  const [parentClass, setParentClass] = useState("page");
+
+  const updateParentClass = () => {
+    if (parentClass == "page") {
+      setParentClass(parentClass + " dark");
+    } else {
+      setParentClass("page");
+    }
+  };
+
+  return (
+    <>
+      <React.StrictMode>
+        <div className={parentClass}>
+          <Header />
+          <ToggleDarkMode updateParentClass={updateParentClass} />
+          <RouterProvider router={router} />
+        </div>
+      </React.StrictMode>
+    </>
+  );
+};
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <div className="page">
-      <Header />
-      <RouterProvider router={router} />
-    </div>
-  </React.StrictMode>
+  <Main />
 );

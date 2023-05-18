@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+#root {
+  width: 100%;
+  margin: 0 0;
+  text-align: center;
+  height: 100vh;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.Header {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  width: 800px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-top: 10vh;
+}
+
+.App form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.decks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 600px;
+  margin: 10vh auto;
+  grid-gap: 10px;
+}
+
+.decks li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 150px;
+  background: wheat;
+  color: steelblue;
+  border-radius: 1em;
+  position: relative;
+}
+
+.decks li button {
+  position: absolute;
+  font-size: 12px;
+  top: 6px;
+  right: 5px;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  background: wheat;
+  color: steelblue;
+  border-radius: 1em;
+}
+button:hover {
+  border-color: steelblue;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+.app h1 {
+  font-size: 32px;
+  text-align: center;
+}
