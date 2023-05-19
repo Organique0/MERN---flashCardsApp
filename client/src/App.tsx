@@ -11,6 +11,12 @@ function App() {
 
   async function handleCreateDeck(e: React.FormEvent) {
     e.preventDefault();
+    if (title == "") {
+      console.error(
+        "title is required. Otherwise the server will crash cuz it's made of a stack of cards."
+      );
+      return;
+    }
     const deck = await createDeck(title);
     setDecks([...decks, deck]);
     setTitle("");
@@ -62,6 +68,7 @@ function App() {
           <input
             className="border light-ring dark:dark-ring text-light-text"
             id="deck-title"
+            required
             value={title}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               setTitle(e.target.value);

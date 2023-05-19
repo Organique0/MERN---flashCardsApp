@@ -14,6 +14,12 @@ export default function Deck() {
 
   async function handleCreateCard(e: React.FormEvent) {
     e.preventDefault();
+    if (text == "") {
+      console.error(
+        "title is required. Otherwise the server will crash cuz it's made of a stack of cards"
+      );
+      return;
+    }
     const { cards: serverCards } = await createCard(deckId!, text);
     setCards(serverCards);
     setText("");
@@ -70,6 +76,7 @@ export default function Deck() {
           <input
             className="border light-ring dark:dark-ring text-light-text"
             id="card-title"
+            required
             value={text}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               setText(e.target.value);
