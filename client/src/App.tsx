@@ -31,7 +31,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="flex flex-col gap-3 w-full mt-44">
+      <div className="flex flex-col gap-3 w-full mt-32">
         <div className="flex items-center justify-center">
           <p className="light-ring shadow dark:dark-ring title dark:dark-shadow dark:text-dark-color light:text-light-text-primary">
             YOUR DECKS

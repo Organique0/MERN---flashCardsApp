@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./styles/Style.css";
@@ -19,15 +19,23 @@ const router = createBrowserRouter([
 ]);
 
 const Main = () => {
-  const [parentClass, setParentClass] = useState("page");
+  const [parentClass, setParentClass] = useState(() => {
+    // Get the stored value from localStorage, or use the default value
+    return localStorage.getItem("parentClass") || "page";
+  });
 
   const updateParentClass = () => {
-    if (parentClass == "page") {
-      setParentClass(parentClass + " dark");
+    if (parentClass === "page") {
+      setParentClass("page dark");
     } else {
       setParentClass("page");
     }
   };
+
+  useEffect(() => {
+    // Update the stored value in localStorage whenever parentClass changes
+    localStorage.setItem("parentClass", parentClass);
+  }, [parentClass]);
 
   return (
     <>

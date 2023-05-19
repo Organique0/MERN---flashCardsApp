@@ -1,17 +1,24 @@
 import "./styles/Style.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type ToggleProps = {
   updateParentClass: () => void;
 };
 
 export function ToggleDarkMode({ updateParentClass }: ToggleProps) {
-  const [isToggled, setIsToggled] = useState(false);
+  const [isToggled, setIsToggled] = useState(() => {
+    return localStorage.getItem("isToggled") === "true" || false;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("isToggled", isToggled.toString());
+  }, [isToggled]);
 
   const handleToggle = () => {
     setIsToggled(!isToggled);
     updateParentClass();
   };
+
   return (
     <div className="shadow dark:dark-ring toggle bg-light-background text-light-text-primary dark:bg-dark-background  dark:text-dark-text-primary py-2 px-4 w-44 mt-5 absolute top-12 right-8 rounded-2xl">
       <label className="toggleLabel relative inline-flex items-center cursor-pointer">

@@ -30,7 +30,7 @@
     px-12 
     py-6
     border-gray-400
-    rounded-xl
+    rounded-xl;
   }
   .decks {
     @apply grid 
@@ -39,19 +39,20 @@
     mt-14
     mb-14
     mx-auto 
-    gap-5;
+    gap-5
+    max-w-4xl;
   }
   .decks li {
     @apply flex
     relative
     justify-center 
-    align-middle
     items-center
     w-64 
     h-44 
     bg-light-deck
     dark:bg-dark-deck
     text-light-text-primary
+    justify-self-center
     rounded-2xl;
   }
   .decks li button {
@@ -61,13 +62,37 @@
     right-3;
   }
   .App {
-    @apply -mt-12 m-auto w-full h-screen flex flex-col bg-light-background dark:bg-dark-background;
+    @apply h-full m-auto w-full flex flex-col bg-light-background dark:bg-dark-background min-h-screen;
+    margin-top: -48px;
   }
   .myButton {
     @apply h-8 rounded-xl px-6 py-1 font-semibold dark:text-dark-text-primary dark:bg-dark-color bg-light-card light-ring dark:dark-ring cursor-pointer;
   }
   .myForm {
-    @apply flex gap-3 items-center justify-center;
+    @apply flex gap-3 items-center justify-center mb-24;
+  }
+  /* Responsive Styles */
+  @media (min-width: 680px) {
+    .decks {
+      @apply grid-cols-2;
+    }
+    .decks li {
+      @apply w-64;
+    }
+  }
+  @media (min-width: 1020px) {
+    .decks {
+      @apply grid-cols-3;
+    }
+  }
+  @media (max-width: 680px) {
+    .decks {
+      @apply grid-cols-1
+      w-96;
+    }
+    .decks li {
+      @apply w-96;
+    }
   }
 }
 
