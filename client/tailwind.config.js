@@ -16,23 +16,24 @@ export default {
             accent: "#007BFF", // Blue
             success: "#28A745", // Green
             error: "#DC3545" // Red
-          },
-          dark: {
-            background: "#242424", // Dark Gray
-            card: "#333333", // Dark Gray
-            deck: "#1E1E1E", // Darker Gray
-            header: "#FFFFFF", // White
-            text: {
-              primary: "#FFFFFF", // White
-              secondary: "#CCCCCC", // Light Gray
-              accent: "#FFC107", // Yellow
-              success: "#34D399", // Green
-              error: "#EF4444" // Red
-            }
+          }
+        },
+        dark: {
+          color: "#D946EF",
+          background: "#242424", // Dark Gray
+          card: "#333333", // Dark Gray
+          deck: "#1E1E1E", // Darker Gray
+          header: "#FFFFFF", // White
+          text: {
+            primary: "#FFFFFF", // White
+            secondary: "#CCCCCC", // Light Gray
+            accent: "#FFC107", // Yellow
+            success: "#34D399", // Green
+            error: "#EF4444" // Red
           }
         }
-      },
-      plugins: []
-    }
+      }
+    },
+    plugins: []
   }
 };

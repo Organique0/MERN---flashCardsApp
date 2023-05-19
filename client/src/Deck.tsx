@@ -38,26 +38,46 @@ export default function Deck() {
 
   return (
     <div className="App">
-      <h1>{deck?.title}</h1>
-      <ul className="decks">
-        {cards.map((card, cardId) => (
-          <li key={cardId}>
-            <button onClick={() => handleDeleteCard(cardId)}>X</button>
-            {card}
-          </li>
-        ))}
-      </ul>
-      <form onSubmit={handleCreateCard}>
-        <label htmlFor="card-title">Card text</label>
-        <input
-          id="card-title"
-          value={text}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setText(e.target.value);
-          }}
-        />
-        <button>Create Card</button>
-      </form>
+      <div className="flex flex-col gap-3 w-full mt-44">
+        <div className="flex items-center justify-center">
+          <p
+            className="light-ring shadow dark:dark-ring title 
+      dark:dark-shadow dark:text-dark-color 
+      light:text-light-text-primary"
+          >
+            {deck?.title}
+          </p>
+        </div>
+        <ul className="decks">
+          {cards.map((card, cardId) => (
+            <li key={cardId}>
+              <button
+                className="link dark:text-dark-text-primary"
+                onClick={() => handleDeleteCard(cardId)}
+              >
+                X
+              </button>
+              <p className="font-semibold text-light-text-primary dark:text-dark-text-primary">
+                {card}
+              </p>
+            </li>
+          ))}
+        </ul>
+        <form onSubmit={handleCreateCard} className="myForm">
+          <label className="link dark:text-dark-color" htmlFor="card-title">
+            Card text
+          </label>
+          <input
+            className="border light-ring dark:dark-ring text-light-text"
+            id="card-title"
+            value={text}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              setText(e.target.value);
+            }}
+          />
+          <button className="myButton">Create Card</button>
+        </form>
+      </div>
     </div>
   );
 }

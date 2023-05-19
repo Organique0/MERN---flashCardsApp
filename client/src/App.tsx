@@ -30,29 +30,44 @@ function App() {
   }, []);
 
   return (
-    <div className="container">
-      <div className="App">
-        <h1 className="dark:text-dark-text-primary light:text-light-text-primary">
-          YOUR DECKS
-        </h1>
+    <div className="App">
+      <div className="flex flex-col gap-3 w-full mt-44">
+        <div className="flex items-center justify-center">
+          <p className="light-ring shadow dark:dark-ring title dark:dark-shadow dark:text-dark-color light:text-light-text-primary">
+            YOUR DECKS
+          </p>
+        </div>
         <ul className="decks">
           {decks.map((deck) => (
             <li key={deck._id}>
-              <button onClick={() => handleDeleteDeck(deck._id)}>X</button>
-              <Link to={`decks/${deck._id}`}>{deck.title}</Link>
+              <button
+                className="link dark:text-dark-text-primary"
+                onClick={() => handleDeleteDeck(deck._id)}
+              >
+                X
+              </button>
+              <Link
+                className="link dark:text-dark-text-primary"
+                to={`decks/${deck._id}`}
+              >
+                {deck.title}
+              </Link>
             </li>
           ))}
         </ul>
-        <form onSubmit={handleCreateDeck}>
-          <label htmlFor="deck-title">Deck Title</label>
+        <form onSubmit={handleCreateDeck} className="myForm">
+          <label className="link dark:text-dark-color" htmlFor="deck-title">
+            Deck Title
+          </label>
           <input
+            className="border light-ring dark:dark-ring text-light-text"
             id="deck-title"
             value={title}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               setTitle(e.target.value);
             }}
           />
-          <button>Create Deck</button>
+          <button className="myButton">Create Deck</button>
         </form>
       </div>
     </div>

@@ -1,73 +1,74 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-#root {
-  width: 100%;
-  margin: 0 0;
-  text-align: center;
-  height: 100vh;
-}
 
-.page {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-.Header {
-  height: 50px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.container {
-  width: 800px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
-}
-
-.App {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  margin-top: 10vh;
-}
-
-.App form {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-}
-
-.decks {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  width: 600px;
-  margin: 10vh auto;
-  grid-gap: 10px;
-}
-
-.decks li {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  height: 150px;
-  background: wheat;
-  color: steelblue;
-  border-radius: 1em;
-  position: relative;
-}
-
-.decks li button {
-  position: absolute;
-  font-size: 12px;
-  top: 6px;
-  right: 5px;
+@layer components {
+  .link {
+    @apply text-light-text-accent
+    no-underline 
+    font-semibold 
+    hover:text-light-text-secondary 
+    cursor-pointer 
+    dark:text-dark-text-primary;
+  }
+  .shadow {
+    @apply drop-shadow-lg;
+  }
+  .dark-ring {
+    @apply ring-2 
+    ring-fuchsia-500 
+    ring-opacity-20;
+  }
+  .light-ring {
+    @apply ring-2 
+    ring-light-text-accent 
+    ring-opacity-20;
+  }
+  .title {
+    @apply text-5xl 
+    text-center
+    px-12 
+    py-6
+    border-gray-400
+    rounded-xl
+  }
+  .decks {
+    @apply grid 
+    grid-cols-3 
+    w-4/5
+    mt-14
+    mb-14
+    mx-auto 
+    gap-5;
+  }
+  .decks li {
+    @apply flex
+    relative
+    justify-center 
+    align-middle
+    items-center
+    w-64 
+    h-44 
+    bg-light-deck
+    dark:bg-dark-deck
+    text-light-text-primary
+    rounded-2xl;
+  }
+  .decks li button {
+    @apply absolute
+    text-sm
+    top-3
+    right-3;
+  }
+  .App {
+    @apply -mt-12 m-auto w-full h-screen flex flex-col bg-light-background dark:bg-dark-background;
+  }
+  .myButton {
+    @apply h-8 rounded-xl px-6 py-1 font-semibold dark:text-dark-text-primary dark:bg-dark-color bg-light-card light-ring dark:dark-ring cursor-pointer;
+  }
+  .myForm {
+    @apply flex gap-3 items-center justify-center;
+  }
 }
 
 :root {
@@ -79,63 +80,4 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  cursor: pointer;
-  transition: border-color 0.25s;
-  background: wheat;
-  color: steelblue;
-  border-radius: 1em;
-}
-button:hover {
-  border-color: steelblue;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
-.app h1 {
-  font-size: 32px;
-  text-align: center;
 }
