@@ -1,6 +1,6 @@
 import "dotenv/config";
 import express, { NextFunction, Request, Response } from "express";
-import cors from "cors";
+import cors, { CorsOptions } from "cors";
 import { getDecksController } from "./controllers/getDecksController";
 import { createDeckController } from "./controllers/createDeckController";
 import { deleteDeckController } from "./controllers/deleteDeckController";
@@ -10,8 +10,16 @@ import { deleteCardFromDeckController } from "./controllers/deleteCardFromDeckCo
 
 const app = express();
 
-app.use(cors());
+const corsOptions: CorsOptions = {
+  origin: 'https://mern-flash-cards-app.vercel.app',
+  methods: ['POST', 'GET', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
+
 
 app.get("/", (req, res) => {
   res.send("hello world!");
